@@ -1,4 +1,3 @@
-# 20221004
 
 # Python If ... Else
 ## Python Conditions and If statements
