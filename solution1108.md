@@ -30,7 +30,21 @@
     - 應用層主要功能是處理應用程式，進而提供使用者網路應用服務。
     
 ## 底下網路設備運作在哪一層? Hub, switch, router, L4-switch, proxy
+- Hub
+  - 第一層
+- Switch
+  - 第二層
+- Router
+  - 第三層
+- L4-switch
+  - 第四層
+- Proxy
+  - 第七層
 ## TCP/IP有那些層?寫出與OSI七層模型的對應!
+- 網路存取層 (Network Access Layer) --> 實體層、資料鏈結層
+- 網路互連層 (Internet Layer) --> 網路層
+- 傳輸層 (Transport Layer) --> 傳輸層
+- 應用層 (Application Layer) --> 會議層、表現層、應用層
 
 ## 簡述底下應用層協定(英文全名與簡單功能說明):
 - HTTP vs HTTPs
@@ -90,14 +104,76 @@
     -  許多人認為它是安全文件傳輸的最佳方法。
     -  利用 SSH（安全插座殼或安全殼），通常也被稱為 "安全殼檔案傳輸協定"。
 - smtp, pop3
+  - smtp
+    - 簡單郵遞傳送協定
+    - Simple Mail Transfer Protocol
+    - 可用在傳送和接收電子郵件的資訊
+    - SMTP通常用作傳送電子郵件資訊，而非接收。
+    - SMTP是一個相對簡單的基於文字的協定。
+  - pop3
+    - pop最新版本為POP3
+    - Post Office Protocol - Version 3
+    - 提供了SSL加密的POP3協定被稱為POP3S。
+    - 原來是專為在一部電腦上使用而設計的較舊協定。
+    - 只支援單向電子郵件同步處理
 - SNMP
-
+  - SNMP
+    - 簡易網路管理通訊協定 
+    - Simple Network Management Protocol 
+    - 這項通訊協定就是網路監控與裝置通訊的命脈。
+    - SNMP 由一組網路管理標準構成
+    - 是網際網路通訊協定套件的其中一項要素
 ## 簡述底下傳輸層協定(英文全名與簡單功能說明):TCP vs UDP
-- TCP
-  - reliable(可靠的) vs unreliable(不可靠的)
-  - TCP three-way handshaking(三項交握)  
-  - TCP syn flood attack
+- TCP vs UDP
+  - TCP
+    - 傳輸控制協定 
+    - Transmission Control Protocol
+    - 是一種連接導向的、可靠的、基於位元組流的傳輸層通信協定
+    - 由IETF的RFC 793定義。
+    - TCP層是位於IP層之上，應用層之下的中間層。
+  - UDP
+    - 使用者資料包協定
+    - User Datagram Protocol
+    - 是一個簡單的面向資料包的通信協定，位於OSI模型的傳輸層。
+    - 由David P. Reed在1980年設計且在RFC 768中被規範。
+    - 典型網路上的眾多使用UDP協定的關鍵應用在一定程度上是相似的。
+- reliable(可靠的) vs unreliable(不可靠的)
+  - reliable 
+    - reliable可靠的
+    - TCP 使用序列號來標識數據的每個字節。
+    - 第一個字節的序列號由發送器為第一個數據包選擇，該數據包標記為 SYN。
+    - 是通過發送方檢測丟失的數據並重新傳輸來實現的。
+    - TCP 使用兩種主要技術來識別丟失。重傳超時 (RTO) 和重複累積確認 (DupAcks)。
+  - unreliable
+    - unreliable不可靠的
+    - UDP是一種不可靠的協定
+    - 應用程式通常必須容許一些遺失、錯誤或重複的封包。
+    - 某些應用程式（如TFTP）可能會根據需要在應用程式層中添加基本的可靠性機制。
+    - UDP屬於無連接協定
+- TCP three-way handshaking(三項交握)
+  - 過程建立一個連接。
+  - 在連接建立過程中，很多參數要被初始化。
+  - 伺服器端被被動打開以後，客戶端就能開始建立主動打開（active open）。
+  - SYN佇列：存放完成了二次握手的結果。 佇列長度由listen函式的參數backlog指定。
+  - ACCEPT佇列：存放完成了三次握手的結果。佇列長度由listen函式的參數backlog指定。
+- TCP syn flood attack
+  - SYN 洪水是一種拒絕服務攻擊形式
+  - 攻擊者在該攻擊中快速啟動與服務器的連接，而無需完成連接。
+  - 服務器必須花費資源等待半開的連接
+  - 會消耗足夠的資源以使系統對合法流量無響應
+  - 攻擊者發送的數據包是數據包SYN，是TCP用於建立連接的三次握手的一部分。
 
 ## 簡述底下網路層協定(英文全名與簡單功能說明): IP   ICMP
 - IP
+  - 網際協定
+  - Internet Protocol
+  - 一種應用於網際網路的電腦網路協定
+  - IP位址，一種電腦網路位址
+  - 是在 TCP/IP 協定套組中網路層的主要協定
+
 - ICMP
+  - 網際網路控制訊息協定
+  - Internet Control Message Protocol
+  - 是網際網路協定套組的核心協定之一。
+  - 它用於網際網路協定（IP）中傳送控制訊息，提供可能發生在通訊環境中的各種問題回饋。
+  - ICMP依靠IP來完成它的任務，它是IP的主要部分。
