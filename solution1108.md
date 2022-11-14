@@ -30,16 +30,11 @@
     - 應用層主要功能是處理應用程式，進而提供使用者網路應用服務。
     
 ## 底下網路設備運作在哪一層? Hub, switch, router, L4-switch, proxy
-- Hub
-  - 第一層
-- Switch
-  - 第二層
-- Router
-  - 第三層
-- L4-switch
-  - 第四層
-- Proxy
-  - 第七層
+- Hub第一層
+- Switch第二層
+- Router第三層
+- L4-switch第四層
+- Proxy第七層
 ## TCP/IP有那些層?寫出與OSI七層模型的對應!
 - 網路存取層 (Network Access Layer) --> 實體層、資料鏈結層
 - 網路互連層 (Internet Layer) --> 網路層
